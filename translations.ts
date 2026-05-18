@@ -215,6 +215,13 @@ export interface Translations {
   qnaDocumentAnswer: string;
   qnaSecurityAnswer: string;
   qnaDistrictAnswer: string;
+
+  // Notifications & Messages
+  grievanceSubmittedSuccessfully: string;
+  yourIDIs: string;
+  replyAddedSuccessfully: string;
+  loggedOutSuccessfully: string;
+  pleaseLoginFirst: string;
 }
 
 const englishTranslations: Translations = {
@@ -432,6 +439,13 @@ const englishTranslations: Translations = {
   qnaDocumentAnswer: "You can upload JPG, PNG images or PDF documents. Please ensure files are clear and relevant to your complaint.",
   qnaSecurityAnswer: "Your data is completely secure with Haryana Government. We only share details with the assigned Nodal Officer for resolving the issue.",
   qnaDistrictAnswer: "This portal covers all Haryana districts including Gurugram, Faridabad, Panipat, Karnal, Hisar, Rohtak, Ambala, Yamunanagar, Sonipat, and Bhiwani.",
+
+  // Notifications & Messages
+  grievanceSubmittedSuccessfully: "Grievance Submitted Successfully!",
+  yourIDIs: "Your ID is",
+  replyAddedSuccessfully: "Reply added successfully!",
+  loggedOutSuccessfully: "Logged out successfully!",
+  pleaseLoginFirst: "Please login first!",
 };
 
 const hindiTranslations: Translations = {
@@ -649,6 +663,13 @@ const hindiTranslations: Translations = {
   qnaDocumentAnswer: "आप JPG, PNG छवियां या PDF दस्तावेज़ अपलोड कर सकते हैं। कृपया सुनिश्चित करें कि फ़ाइलें स्पष्ट हैं और आपकी शिकायत से संबंधित हैं।",
   qnaSecurityAnswer: "आपका डेटा हरियाणा सरकार के साथ पूरी तरह सुरक्षित है। हम समस्या को हल करने के लिए केवल आवश्यक विवरण नियुक्त नोडल अधिकारी के साथ साझा करते हैं।",
   qnaDistrictAnswer: "यह पोर्टल गुड़गांव, फरीदाबाद, पानीपत, करनाल, हिसार, रोहतक, अंबाला, यमुनानगर, सोनीपत और भिवानी सहित सभी हरियाणा जिलों को कवर करता है।",
+
+  // Notifications & Messages
+  grievanceSubmittedSuccessfully: "शिकायत सफलतापूर्वक प्रस्तुत की गई!",
+  yourIDIs: "आपका ID है",
+  replyAddedSuccessfully: "उत्तर सफलतापूर्वक जोड़ा गया!",
+  loggedOutSuccessfully: "सफलतापूर्वक लॉगआउट किया गया!",
+  pleaseLoginFirst: "कृपया पहले लॉगिन करें!",
 };
 
 export const translations: Record<Language, Translations> = {

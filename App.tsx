@@ -4,16 +4,19 @@ import { Header, Footer } from './components/Layout';
 import { HomeView, FileGrievanceView, GRODashboard, AuthWizard, TrackGrievanceView, GrievanceDetailsView, CitizenDashboard, ChatbotAssistant } from './components/Views';
 import { User, UserRole, Grievance, GrievanceStatus, ChatbotData } from './types';
 import { Modal } from './components/UI';
+import { useLanguage } from './LanguageContext';
 
 type ViewState = 'home' | 'dashboard' | 'file-grievance' | 'track' | 'grievance-details';
 
 const App: React.FC = () => {
+  const { t } = useLanguage();
   const [view, setView] = useState<ViewState>('home');
   const [user, setUser] = useState<User | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [pendingView, setPendingView] = useState<ViewState | null>(null);
   const [selectedGrievance, setSelectedGrievance] = useState<Grievance | null>(null);
   const [chatbotData, setChatbotData] = useState<ChatbotData | undefined>(undefined);
+  const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   // Restore session from localStorage
   useEffect(() => {
@@ -22,6 +25,14 @@ const App: React.FC = () => {
       setUser(JSON.parse(storedUser));
     }
   }, []);
+
+  // Auto-hide notification after 3 seconds
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => setNotification(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
 
   const handleAuthSuccess = (authenticatedUser: User) => {
     setUser(authenticatedUser);
@@ -80,7 +91,10 @@ const App: React.FC = () => {
     const existing = JSON.parse(localStorage.getItem(key) || "[]");
     localStorage.setItem(key, JSON.stringify([newGrievance, ...existing]));
 
-    alert(`Grievance Submitted Successfully! Your ID is ${newGrievance.id}`);
+    setNotification({
+      message: `${t('grievanceSubmittedSuccessfully')} ${t('yourIDIs')} ${newGrievance.id}`,
+      type: 'success'
+    });
     setChatbotData(undefined); // Reset chatbot data
     // Automatically go to tracking view to see the new grievance
     setView('track');
@@ -114,6 +128,12 @@ const App: React.FC = () => {
     const allGrievances = JSON.parse(localStorage.getItem(key) || "[]");
     const updatedList = allGrievances.map((g: Grievance) => g.id === updatedGrievance.id ? updatedGrievance : g);
     localStorage.setItem(key, JSON.stringify(updatedList));
+
+    // Show notification
+    setNotification({
+      message: t('replyAddedSuccessfully'),
+      type: 'success'
+    });
   };
 
   const handleChatbotNavigate = (target: 'file-grievance' | 'track', data?: any) => {
@@ -133,6 +153,14 @@ const App: React.FC = () => {
       />
 
       <main className="flex-grow relative">
+        {/* Notification Toast */}
+        {notification && (
+          <div className={`fixed top-24 right-6 z-40 max-w-sm p-4 rounded-lg shadow-lg text-white transition-all duration-300 ${
+            notification.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+          }`}>
+            {notification.message}
+          </div>
+        )}
         {view === 'home' && (
           <HomeView
             onFileGrievance={() => navigateTo('file-grievance')}
