@@ -3,194 +3,194 @@ import { Grievance, GrievanceStatus } from './types';
 export const MOCK_GRIEVANCES: Grievance[] = [
   {
     id: "HRG-2025-001",
-    subject: "Water Supply Disruption in Gurugram Sector 45",
-    description: "The water supply in Sector 45, Gurugram has been irregular for the past week. We are only receiving water for 30 minutes in the morning. This is causing severe inconvenience to residents.",
-    location: "Sector 45, Gurugram",
-    district: "Gurugram",
-    category: "Water Supply",
+    subject: "गुड़गांव सेक्टर 45 में जल आपूर्ति में व्यवधान",
+    description: "गुड़गांव के सेक्टर 45 में जल आपूर्ति पिछले एक सप्ताह से अनियमित है। हम केवल सुबह 30 मिनट के लिए जल प्राप्त कर रहे हैं। इससे निवासियों को गंभीर असुविधा हो रही है।",
+    location: "सेक्टर 45, गुड़गांव",
+    district: "गुड़गांव",
+    category: "जल आपूर्ति",
     dateFiled: "2025-01-10",
     status: GrievanceStatus.UNDER_REVIEW,
     files: ["water_complaint.jpg"],
     lastUpdated: "2025-01-12",
     isAnonymized: false,
-    assignedOfficer: "Sh. Vikram Singh (Executive Engineer, Public Health Department)",
+    assignedOfficer: "श्री विक्रम सिंह (कार्यपालक अभियंता, लोक स्वास्थ्य विभाग)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-10", status: "completed" },
-      { label: "Assigned to Department", date: "2025-01-11", status: "completed" },
-      { label: "Under Review", date: "2025-01-12", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-10", status: "completed" },
+      { label: "विभाग को सौंपी गई", date: "2025-01-11", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-12", status: "current" }
     ],
     replies: []
   },
   {
     id: "HRG-2025-002",
-    subject: "Road Pothole Complaint in Karnal",
-    description: "There are multiple deep potholes on the main road near Sector 12, Karnal. These potholes are causing accidents and damage to vehicles. Immediate repair is required.",
-    location: "Sector 12 Main Road, Karnal",
-    district: "Karnal",
-    category: "Road & Infrastructure",
+    subject: "करनाल में सड़क के गड्ढे की शिकायत",
+    description: "करनाल के सेक्टर 12 के पास मुख्य सड़क पर कई गहरे गड्ढे हैं। ये गड्ढे दुर्घटनाओं और वाहनों को नुकसान का कारण बन रहे हैं। तुरंत मरम्मत की आवश्यकता है।",
+    location: "सेक्टर 12 मेन रोड, करनाल",
+    district: "करनाल",
+    category: "सड़क और बुनियादी ढांचा",
     dateFiled: "2025-01-08",
     status: GrievanceStatus.IN_PROGRESS,
     files: ["pothole_photo1.jpg", "pothole_photo2.jpg"],
     lastUpdated: "2025-01-14",
     isAnonymized: false,
-    assignedOfficer: "Sh. Amit Kumar (Junior Engineer, PWD Haryana)",
+    assignedOfficer: "श्री अमित कुमार (जूनियर इंजीनियर, PWD हरियाणा)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-08", status: "completed" },
-      { label: "Under Review", date: "2025-01-09", status: "completed" },
-      { label: "Work In Progress", date: "2025-01-14", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-08", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-09", status: "completed" },
+      { label: "काम प्रगति में है", date: "2025-01-14", status: "current" }
     ],
     replies: [
-      { author: "Nodal Officer", message: "Road repair work has been scheduled. Expected completion within 5 days.", date: "2025-01-14" }
+      { author: "नोडल अधिकारी", message: "सड़क की मरम्मत का कार्य निर्धारित किया जा चुका है। 5 दिनों में पूरा होने की उम्मीद है।", date: "2025-01-14" }
     ]
   },
   {
     id: "HRG-2025-003",
-    subject: "Electricity Outage in Faridabad",
-    description: "Frequent power cuts in Sector 21, Faridabad for the last 3 days. Power goes off for 4-5 hours daily without any prior notice. This is affecting work from home employees and students.",
-    location: "Sector 21, Faridabad",
-    district: "Faridabad",
-    category: "Electricity",
+    subject: "फरीदाबाद में बिजली की कटौती",
+    description: "फरीदाबाद के सेक्टर 21 में पिछले 3 दिनों से बार-बार बिजली कटौती हो रही है। बिना किसी सूचना के प्रतिदिन 4-5 घंटे के लिए बिजली बंद हो जाती है। इससे घर से काम करने वाले कर्मचारियों और छात्रों को प्रभावित हो रहे हैं।",
+    location: "सेक्टर 21, फरीदाबाद",
+    district: "फरीदाबाद",
+    category: "बिजली",
     dateFiled: "2025-01-05",
     status: GrievanceStatus.CLOSED,
     files: [],
-    atr: "Issue resolved.",
+    atr: "समस्या का समाधान किया गया।",
     lastUpdated: "2025-01-09",
     isAnonymized: false,
-    resolution: "Faulty transformer in the area has been replaced. Power supply has been restored and stabilized. Regular monitoring is being done.",
-    closingOfficer: "Smt. Sunita Devi (Assistant Engineer, DHBVN)",
+    resolution: "क्षेत्र में खराब ट्रांसफॉर्मर को बदला गया है। बिजली की आपूर्ति बहाल और स्थिर की गई है। नियमित निगरानी की जा रही है।",
+    closingOfficer: "श्रीमती सुनीता देवी (सहायक अभियंता, DHBVN)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-05", status: "completed" },
-      { label: "Under Review", date: "2025-01-06", status: "completed" },
-      { label: "Resolved", date: "2025-01-09", status: "completed" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-05", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-06", status: "completed" },
+      { label: "समाधान किया गया", date: "2025-01-09", status: "completed" }
     ],
     replies: [
-      { author: "Nodal Officer", message: "Our team is investigating the issue. We apologize for the inconvenience.", date: "2025-01-06" },
-      { author: "Nodal Officer", message: "Faulty transformer identified. Replacement work started.", date: "2025-01-08" }
+      { author: "नोडल अधिकारी", message: "हमारी टीम समस्या की जांच कर रही है। असुविधा के लिए खेद है।", date: "2025-01-06" },
+      { author: "नोडल अधिकारी", message: "खराब ट्रांसफॉर्मर की पहचान की गई है। प्रतिस्थापन कार्य शुरू किया गया है।", date: "2025-01-08" }
     ]
   },
   {
     id: "HRG-2025-004",
-    subject: "Property Tax Issue in Rohtak",
-    description: "I have received an incorrect property tax bill for my house in Model Town, Rohtak. The assessed area mentioned is incorrect and the tax amount is inflated. Request for reassessment.",
-    location: "Model Town, Rohtak",
-    district: "Rohtak",
-    category: "Municipal Services",
+    subject: "रोहतक में संपत्ति कर की समस्या",
+    description: "मुझे रोहतक के मॉडल टाउन में अपने घर के लिए गलत संपत्ति कर का बिल प्राप्त हुआ है। उल्लिखित क्षेत्र गलत है और कर की राशि बढ़ी हुई है। पुनः मूल्यांकन का अनुरोध।",
+    location: "मॉडल टाउन, रोहतक",
+    district: "रोहतक",
+    category: "नगर निगम सेवाएं",
     dateFiled: "2025-01-12",
     status: GrievanceStatus.SUBMITTED,
     files: ["tax_bill.pdf", "property_documents.pdf"],
     lastUpdated: "2025-01-12",
     isAnonymized: false,
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-12", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-12", status: "current" }
     ],
     replies: []
   },
   {
     id: "HRG-2025-005",
-    subject: "Ration Card Update Request in Hisar",
-    description: "I need to add my newborn child's name to the ration card. I have submitted the application at the local office 2 months ago but there is no update. Request expedited processing.",
-    location: "Ward 15, Hisar City",
-    district: "Hisar",
-    category: "Public Distribution System (Ration)",
+    subject: "हिसार में राशन कार्ड अपडेट अनुरोध",
+    description: "मुझे अपने नवजात शिशु का नाम राशन कार्ड में जोड़ना है। मैंने 2 महीने पहले स्थानीय कार्यालय में आवेदन जमा किया था लेकिन कोई अपडेट नहीं है। तेजी से प्रसंस्करण का अनुरोध।",
+    location: "वार्ड 15, हिसार शहर",
+    district: "हिसार",
+    category: "सार्वजनिक वितरण प्रणाली (राशन)",
     dateFiled: "2025-01-03",
     status: GrievanceStatus.RESOLVED,
     files: ["birth_certificate.pdf"],
     lastUpdated: "2025-01-15",
     isAnonymized: false,
-    resolution: "Ration card has been updated with the new family member. Updated card can be collected from the local distribution office.",
-    closingOfficer: "Sh. Ramesh Chandra (District Food & Supply Officer)",
+    resolution: "राशन कार्ड को नए परिवार के सदस्य के साथ अपडेट किया जा चुका है। अपडेट किया गया कार्ड स्थानीय वितरण कार्यालय से प्राप्त किया जा सकता है।",
+    closingOfficer: "श्री रमेश चंद्र (जिला खाद्य और आपूर्ति अधिकारी)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-03", status: "completed" },
-      { label: "Under Review", date: "2025-01-05", status: "completed" },
-      { label: "Resolved", date: "2025-01-15", status: "completed" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-03", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-05", status: "completed" },
+      { label: "समाधान किया गया", date: "2025-01-15", status: "completed" }
     ],
     replies: [
-      { author: "Nodal Officer", message: "Your application has been located. Processing initiated.", date: "2025-01-05" }
+      { author: "नोडल अधिकारी", message: "आपके आवेदन का पता लगा दिया गया है। प्रसंस्करण शुरू किया जा चुका है।", date: "2025-01-05" }
     ]
   },
   {
     id: "HRG-2025-006",
-    subject: "Garbage Collection Issue in Panipat",
-    description: "Garbage has not been collected from our colony for the past 10 days. The pile of garbage near the community park is causing health hazards and foul smell.",
-    location: "Ansal Sushant City, Panipat",
-    district: "Panipat",
-    category: "Municipal Services",
+    subject: "पानीपत में कूड़े के संग्रहण की समस्या",
+    description: "हमारी कॉलोनी से पिछले 10 दिनों से कूड़ा एकत्रित नहीं किया गया है। सामुदायिक पार्क के पास कूड़े का ढेर स्वास्थ्य खतरे और दुर्गंध का कारण बन रहा है।",
+    location: "अंसल सुशांत सिटी, पानीपत",
+    district: "पानीपत",
+    category: "नगर निगम सेवाएं",
     dateFiled: "2025-01-14",
     status: GrievanceStatus.UNDER_REVIEW,
     files: ["garbage_photo.jpg"],
     lastUpdated: "2025-01-15",
     isAnonymized: true,
-    assignedOfficer: "Sh. Deepak Sharma (Sanitary Inspector, Municipal Corporation Panipat)",
+    assignedOfficer: "श्री दीपक शर्मा (स्वच्छता निरीक्षक, नगर निगम पानीपत)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-14", status: "completed" },
-      { label: "Assigned to Department", date: "2025-01-15", status: "completed" },
-      { label: "Under Review", date: "2025-01-15", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-14", status: "completed" },
+      { label: "विभाग को सौंपी गई", date: "2025-01-15", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-15", status: "current" }
     ],
     replies: []
   },
   {
     id: "HRG-2025-007",
-    subject: "Health Center Staff Absence in Ambala",
-    description: "The Primary Health Center in Village Kesri, Ambala district has been without a doctor for the past month. Villagers have to travel 15 km for basic medical care.",
-    location: "Village Kesri, Ambala",
-    district: "Ambala",
-    category: "Health Services",
+    subject: "अंबाला में स्वास्थ्य केंद्र कर्मचारी की अनुपस्थिति",
+    description: "गांव केसरी, अंबाला जिले में प्राथमिक स्वास्थ्य केंद्र पिछले एक महीने से बिना डॉक्टर के है। गांववासियों को बुनियादी चिकित्सा सेवा के लिए 15 किमी की दूरी तय करनी पड़ रही है।",
+    location: "गांव केसरी, अंबाला",
+    district: "अंबाला",
+    category: "स्वास्थ्य सेवाएं",
     dateFiled: "2025-01-07",
     status: GrievanceStatus.IN_PROGRESS,
     files: [],
     lastUpdated: "2025-01-13",
     isAnonymized: false,
-    assignedOfficer: "Dr. Priya Verma (CMO Office, Ambala)",
+    assignedOfficer: "डॉ. प्रिया वर्मा (CMO कार्यालय, अंबाला)",
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-07", status: "completed" },
-      { label: "Under Review", date: "2025-01-09", status: "completed" },
-      { label: "Action In Progress", date: "2025-01-13", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-07", status: "completed" },
+      { label: "समीक्षा के अधीन", date: "2025-01-09", status: "completed" },
+      { label: "कार्रवाई प्रगति में है", date: "2025-01-13", status: "current" }
     ],
     replies: [
-      { author: "Nodal Officer", message: "Doctor posting order has been issued. Doctor will join within a week.", date: "2025-01-13" }
+      { author: "नोडल अधिकारी", message: "डॉक्टर की नियुक्ति के आदेश जारी किए जा चुके हैं। डॉक्टर एक सप्ताह में शामिल होंगे।", date: "2025-01-13" }
     ]
   },
   {
     id: "HRG-2025-008",
-    subject: "Land Record Correction in Sonipat",
-    description: "There is an error in my land records (Jamabandi). The area mentioned is incorrect. I have submitted application for correction but no action has been taken for 3 months.",
-    location: "Village Barwasni, Sonipat",
-    district: "Sonipat",
-    category: "Revenue / Land Records",
+    subject: "सोनीपत में भूमि रिकॉर्ड सुधार",
+    description: "मेरे भूमि रिकॉर्ड (जमाबंदी) में त्रुटि है। उल्लिखित क्षेत्र गलत है। मैंने सुधार के लिए आवेदन जमा किया है लेकिन 3 महीने से कोई कार्रवाई नहीं की गई है।",
+    location: "गांव बरवास्नी, सोनीपत",
+    district: "सोनीपत",
+    category: "राजस्व / भूमि रिकॉर्ड",
     dateFiled: "2025-01-11",
     status: GrievanceStatus.SUBMITTED,
     files: ["jamabandi_copy.pdf", "application_receipt.pdf"],
     lastUpdated: "2025-01-11",
     isAnonymized: false,
     timeline: [
-      { label: "Grievance Filed", date: "2025-01-11", status: "current" }
+      { label: "शिकायत दर्ज की गई", date: "2025-01-11", status: "current" }
     ],
     replies: []
   }
 ];
 
 export const DISTRICTS = [
-  "Gurugram",
-  "Faridabad",
-  "Panipat",
-  "Karnal",
-  "Hisar",
-  "Rohtak",
-  "Ambala",
-  "Yamunanagar",
-  "Sonipat",
-  "Bhiwani"
+  "गुड़गांव",
+  "फरीदाबाद",
+  "पानीपत",
+  "करनाल",
+  "हिसार",
+  "रोहतक",
+  "अंबाला",
+  "यमुनानगर",
+  "सोनीपत",
+  "भिवानी"
 ];
 
 export const CATEGORIES = [
-  "Water Supply",
-  "Electricity",
-  "Road & Infrastructure",
-  "Police & Law Order",
-  "Municipal Services",
-  "Agriculture",
-  "Health Services",
-  "Education",
-  "Revenue / Land Records",
-  "Public Distribution System (Ration)"
+  "जल आपूर्ति",
+  "बिजली",
+  "सड़क और बुनियादी ढांचा",
+  "पुलिस और कानून-व्यवस्था",
+  "नगर निगम सेवाएं",
+  "कृषि",
+  "स्वास्थ्य सेवाएं",
+  "शिक्षा",
+  "राजस्व / भूमि रिकॉर्ड",
+  "सार्वजनिक वितरण प्रणाली (राशन)"
 ];
