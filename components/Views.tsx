@@ -161,11 +161,24 @@ export const CitizenDashboard: React.FC<{
   }, [user.mobile]);
 
   const getStatusBadge = (status: string) => {
+    const statusLabel = (s: string) => {
+      switch (s) {
+        case GrievanceStatus.SUBMITTED: return t('submitted');
+        case GrievanceStatus.UNDER_REVIEW: return t('underReview');
+        case GrievanceStatus.CLOSED: return t('closed');
+        case GrievanceStatus.IN_PROGRESS: return t('inProgress');
+        case GrievanceStatus.REOPENED: return t('reopened');
+        default: return s;
+      }
+    };
+
     switch (status) {
-      case GrievanceStatus.SUBMITTED: return <Badge type="info">{t('submitted')}</Badge>;
-      case GrievanceStatus.UNDER_REVIEW: return <Badge type="warning">{t('underReview')}</Badge>;
-      case GrievanceStatus.CLOSED: return <Badge type="success">{t('closed')}</Badge>;
-      default: return <Badge type="info">{status}</Badge>;
+      case GrievanceStatus.SUBMITTED: return <Badge type="info">{statusLabel(status)}</Badge>;
+      case GrievanceStatus.UNDER_REVIEW: return <Badge type="warning">{statusLabel(status)}</Badge>;
+      case GrievanceStatus.CLOSED: return <Badge type="success">{statusLabel(status)}</Badge>;
+      case GrievanceStatus.IN_PROGRESS: return <Badge type="warning">{statusLabel(status)}</Badge>;
+      case GrievanceStatus.REOPENED: return <Badge type="info">{statusLabel(status)}</Badge>;
+      default: return <Badge type="info">{statusLabel(status)}</Badge>;
     }
   };
 
@@ -795,7 +808,20 @@ export const TrackGrievanceView: React.FC<{
       case GrievanceStatus.SUBMITTED: return 'info';
       case GrievanceStatus.UNDER_REVIEW: return 'warning';
       case GrievanceStatus.CLOSED: return 'success';
+      case GrievanceStatus.IN_PROGRESS: return 'warning';
+      case GrievanceStatus.REOPENED: return 'info';
       default: return 'info';
+    }
+  };
+
+  const getStatusLabel = (status: string) => {
+    switch (status) {
+      case GrievanceStatus.SUBMITTED: return t('submitted');
+      case GrievanceStatus.UNDER_REVIEW: return t('underReview');
+      case GrievanceStatus.CLOSED: return t('closed');
+      case GrievanceStatus.IN_PROGRESS: return t('inProgress');
+      case GrievanceStatus.REOPENED: return t('reopened');
+      default: return status;
     }
   };
 
@@ -825,7 +851,7 @@ export const TrackGrievanceView: React.FC<{
                   <h3 className="font-bold text-lg text-gov-dark">{g.subject}</h3>
                 </div>
                 <div className="flex items-center justify-between md:justify-end w-full md:w-auto gap-4">
-                   <Badge type={getStatusColor(g.status)}>{g.status}</Badge>
+                   <Badge type={getStatusColor(g.status)}>{getStatusLabel(g.status)}</Badge>
                    <span className="text-gov-blue text-sm font-medium">{t('view')} &rarr;</span>
                 </div>
               </div>
@@ -845,6 +871,17 @@ export const GrievanceDetailsView: React.FC<{
 }> = ({ grievance, onBack, onReply }) => {
   const { t } = useLanguage();
   const [replyText, setReplyText] = useState('');
+
+  const getStatusLabelInDetails = (status: string) => {
+    switch (status) {
+      case GrievanceStatus.SUBMITTED: return t('submitted');
+      case GrievanceStatus.UNDER_REVIEW: return t('underReview');
+      case GrievanceStatus.CLOSED: return t('closed');
+      case GrievanceStatus.IN_PROGRESS: return t('inProgress');
+      case GrievanceStatus.REOPENED: return t('reopened');
+      default: return status;
+    }
+  };
 
   const handleSendReply = () => {
     if (!replyText.trim()) return;
@@ -870,7 +907,7 @@ export const GrievanceDetailsView: React.FC<{
                 grievance.status === GrievanceStatus.CLOSED ? 'success' :
                 grievance.status === GrievanceStatus.UNDER_REVIEW ? 'warning' : 'info'
               }>
-                {grievance.status}
+                {getStatusLabelInDetails(grievance.status)}
               </Badge>
             </div>
 
