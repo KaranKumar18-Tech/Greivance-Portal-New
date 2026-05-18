@@ -272,6 +272,7 @@ export const ChatbotAssistant: React.FC<{
   onNavigate: (view: 'file-grievance' | 'track', data?: any) => void;
   onLogin: () => void;
 }> = ({ user, onNavigate, onLogin }) => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -297,14 +298,14 @@ export const ChatbotAssistant: React.FC<{
   const resetToMainMenu = () => {
     setMode('MENU');
     setMessages([
-      { sender: 'bot', text: 'Namaskar! I am Haryana Sahayak. How can I assist you with your grievance today?' },
+      { sender: 'bot', text: `${t('namaskar')} ${t('haryanaSahayak')} ${t('howCanAssist')}` },
       {
         sender: 'bot',
         isOptions: true,
         options: [
-          { label: 'Get updates on my filed grievances', action: () => handleOptionSelected('UPDATES') },
-          { label: 'File a new grievance', action: () => handleOptionSelected('FILE') },
-          { label: 'Other questions about this portal', action: () => handleOptionSelected('QNA') }
+          { label: t('getUpdatesOnGrievances'), action: () => handleOptionSelected('UPDATES') },
+          { label: t('fileNewGrievanceChat'), action: () => handleOptionSelected('FILE') },
+          { label: t('otherQuestions'), action: () => handleOptionSelected('QNA') }
         ]
       }
     ]);
@@ -315,9 +316,9 @@ export const ChatbotAssistant: React.FC<{
 
     // Add user selection to chat history
     let label = '';
-    if (selectedMode === 'UPDATES') label = 'Get updates on my grievances';
-    if (selectedMode === 'FILE') label = 'File a new grievance';
-    if (selectedMode === 'QNA') label = 'Other questions';
+    if (selectedMode === 'UPDATES') label = t('getUpdatesOnGrievances');
+    if (selectedMode === 'FILE') label = t('fileNewGrievanceChat');
+    if (selectedMode === 'QNA') label = t('otherQuestions');
 
     setMessages(prev => [...prev, { sender: 'user', text: label }]);
 
@@ -336,16 +337,16 @@ export const ChatbotAssistant: React.FC<{
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
-          { sender: 'bot', text: 'You are not logged in. I can only show limited recent grievance data without login.' },
-          { sender: 'bot', text: 'Demo Grievance 1: Road pothole complaint in Karnal – Status: In Progress' },
-          { sender: 'bot', text: 'Demo Grievance 2: Water Supply Issue in Gurugram – Status: Under Review' },
-          { sender: 'bot', text: 'To view all your grievances and real data, please log in first.' },
+          { sender: 'bot', text: `${t('notLoggedIn')} ${t('onlyShowLimited')}` },
+          { sender: 'bot', text: t('demoGrievance1') },
+          { sender: 'bot', text: t('demoGrievance2') },
+          { sender: 'bot', text: t('toViewAll') },
           {
             sender: 'bot',
             isOptions: true,
             options: [
-              { label: 'Login to view all grievances', action: () => { setIsOpen(false); onLogin(); } },
-              { label: 'Back to main options', action: resetToMainMenu }
+              { label: t('loginToViewAll'), action: () => { setIsOpen(false); onLogin(); } },
+              { label: t('backToOptions'), action: resetToMainMenu }
             ]
           }
         ]);
@@ -362,13 +363,13 @@ export const ChatbotAssistant: React.FC<{
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
-          { sender: 'bot', text: `You have ${total} total grievances filed.` },
-          { sender: 'bot', text: `${inProgress} are In Progress/Review, ${resolved} are Resolved.` },
+          { sender: 'bot', text: `${t('youHave')} ${total} ${t('totalGrievancesChat')}` },
+          { sender: 'bot', text: `${inProgress} ${t('areInProgress')} ${resolved} ${t('areResolved')}` },
         ]);
 
         if (allGrievances.length > 0) {
            const recent = allGrievances.slice(0, 3).map((g: any) => `ID: ${g.id}, ${g.subject.substring(0, 20)}... (${g.status})`).join('\n');
-           setMessages(prev => [...prev, { sender: 'bot', text: "Recent:\n" + recent }]);
+           setMessages(prev => [...prev, { sender: 'bot', text: `${t('recent')}:\n` + recent }]);
         }
 
         setMessages(prev => [
@@ -377,8 +378,8 @@ export const ChatbotAssistant: React.FC<{
             sender: 'bot',
             isOptions: true,
             options: [
-              { label: 'Open My Grievances', action: () => { setIsOpen(false); onNavigate('track'); } },
-              { label: 'Back to main options', action: resetToMainMenu }
+              { label: t('openMyGrievances'), action: () => { setIsOpen(false); onNavigate('track'); } },
+              { label: t('backToOptions'), action: resetToMainMenu }
             ]
           }
         ]);
@@ -391,13 +392,13 @@ export const ChatbotAssistant: React.FC<{
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
-          { sender: 'bot', text: 'To file a new grievance, you need to log in first.' },
+          { sender: 'bot', text: t('toFileNew') },
           {
              sender: 'bot',
              isOptions: true,
              options: [
-               { label: 'Login / Register now', action: () => { setIsOpen(false); onLogin(); } },
-               { label: 'Back to main options', action: resetToMainMenu }
+               { label: t('loginButton'), action: () => { setIsOpen(false); onLogin(); } },
+               { label: t('backToOptions'), action: resetToMainMenu }
              ]
           }
         ]);
@@ -412,7 +413,7 @@ export const ChatbotAssistant: React.FC<{
              isOptions: true,
              options: [
                { label: 'Open Grievance Form', action: () => { setIsOpen(false); onNavigate('file-grievance'); } },
-               { label: 'Back to main options', action: resetToMainMenu }
+               { label: t('backToOptions'), action: resetToMainMenu }
              ]
           }
         ]);
