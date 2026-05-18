@@ -562,6 +562,7 @@ export const ChatbotAssistant: React.FC<{
 
 // --- Auth Wizard ---
 export const AuthWizard: React.FC<{ onAuthenticated: (user: User) => void }> = ({ onAuthenticated }) => {
+  const { t } = useLanguage();
   const [step, setStep] = useState<1 | 2>(1);
   const [mobile, setMobile] = useState('');
   const [otp, setOtp] = useState('');
@@ -603,19 +604,19 @@ export const AuthWizard: React.FC<{ onAuthenticated: (user: User) => void }> = (
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gov-blue">Login to Haryana Grievance Portal</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center text-gov-blue">{t('loginOrRegister')}</h2>
 
       {step === 1 ? (
         <>
           <Input
-            label="Mobile Number"
-            placeholder="Enter 10-digit mobile number"
+            label={t('mobileNumber')}
+            placeholder={t('enterMobileNumber')}
             value={mobile}
             onChange={(e) => setMobile(e.target.value.replace(/\D/g, ''))}
             maxLength={10}
             error={error}
           />
-          <Button fullWidth onClick={handleSendOTP} className="mt-2">Get OTP</Button>
+          <Button fullWidth onClick={handleSendOTP} className="mt-2">{t('login')}</Button>
 
           <div className="mt-6 text-center pt-4 border-t">
             <p className="text-sm text-gray-500 mb-2">For Testing Purposes:</p>
