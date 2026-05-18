@@ -3,40 +3,43 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button, Input, Select, TextArea, Card, Badge, Accordion } from './UI';
 import { User, Grievance, GrievanceStatus, TimelineEvent, UserRole, ChatbotData } from '../types';
 import { MOCK_GRIEVANCES, DISTRICTS, CATEGORIES } from '../constants';
+import { useLanguage } from '../LanguageContext';
 
 // --- FAQ Section ---
 export const FAQSection: React.FC = () => {
+  const { t } = useLanguage();
+
   const faqs = [
     {
-      title: "How do I file a grievance?",
-      content: "You can file a grievance by clicking on the 'File a Grievance' button on the home page or your dashboard. You will need to provide a subject, category, district, location, and a detailed description of the issue. You can also upload relevant photos or documents."
+      title: t('howToFileGrievance'),
+      content: t('howToFileAnswer')
     },
     {
-      title: "What documents can I upload with my grievance?",
-      content: "You can upload images (JPG, PNG) and PDF documents that support your complaint. This helps authorities understand the issue better."
+      title: t('whatDocuments'),
+      content: t('whatDocumentsAnswer')
     },
     {
-      title: "How long does it usually take to resolve a grievance?",
-      content: "The resolution time varies depending on the complexity of the issue and the department involved. However, most grievances are reviewed within 7 days, and you will receive updates at every stage."
+      title: t('howLongResolve'),
+      content: t('howLongResolveAnswer')
     },
     {
-      title: "How can I track the status of my grievance?",
-      content: "Once logged in, you can view the status of all your submitted complaints in the 'Track Status' or 'Dashboard' section. You will see a timeline of actions taken."
+      title: t('howTrackGrievance'),
+      content: t('howTrackAnswer')
     },
     {
-      title: "Can I edit or reopen a grievance after submitting?",
-      content: "You cannot edit a grievance once submitted to ensure the integrity of the record. However, if you are not satisfied with the resolution, you can add a reply requesting to reopen the case, or file a new grievance linking to the previous ID."
+      title: t('canEditGrievance'),
+      content: t('canEditAnswer')
     },
     {
-      title: "Is my personal information secure on this portal?",
-      content: "Yes, your personal information is secure. We only share necessary details with the concerned department for the purpose of resolving your grievance. You can also choose to file anonymously if you prefer."
+      title: t('isInfoSecure'),
+      content: t('isInfoSecureAnswer')
     }
   ];
 
   return (
     <div className="bg-gray-50 py-16" id="faq">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-gov-dark mb-8">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-center text-gov-dark mb-8">{t('frequentlyAskedQuestions')}</h2>
         <Accordion items={faqs} />
       </div>
     </div>
@@ -45,6 +48,8 @@ export const FAQSection: React.FC = () => {
 
 // --- Home View ---
 export const HomeView: React.FC<{ onFileGrievance: () => void; onTrack: () => void }> = ({ onFileGrievance, onTrack }) => {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -56,20 +61,18 @@ export const HomeView: React.FC<{ onFileGrievance: () => void; onTrack: () => vo
             {/* Text Content - Aligned Left */}
             <div className="w-full md:w-1/2 text-left">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
-                Jan Samvad, <br />
-                Jan Samadhan
+                {t('janSamvadJanSamadhan')}
               </h1>
               <p className="text-xl mb-8 text-blue-100 max-w-lg drop-shadow-md leading-relaxed">
-                Official Public Grievance Redressal Portal of Haryana Government.
+                {t('officialPublicGrievanceRedressal')}
                 Transparent, Efficient, and Accountable Governance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="secondary" size="lg" onClick={onFileGrievance}>
-                  File a Grievance
+                  {t('fileAGrievance')}
                 </Button>
-                {/* Note: Tracking now typically redirects to login if not authenticated, managed by parent */}
                 <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-gov-blue" onClick={onTrack}>
-                  Track Status
+                  {t('trackStatus')}
                 </Button>
               </div>
             </div>
@@ -86,8 +89,8 @@ export const HomeView: React.FC<{ onFileGrievance: () => void; onTrack: () => vo
                 />
               </div>
               <div className="mt-4 text-center md:text-right">
-                <p className="text-white font-bold text-lg leading-none text-shadow">Shri Nayab Singh Saini</p>
-                <p className="text-xs text-blue-100 font-semibold uppercase tracking-wider mt-1">Chief Minister, Haryana</p>
+                <p className="text-white font-bold text-lg leading-none text-shadow">{t('cmName')}</p>
+                <p className="text-xs text-blue-100 font-semibold uppercase tracking-wider mt-1">{t('chiefMinisterHaryana')}</p>
               </div>
             </div>
 
@@ -99,18 +102,18 @@ export const HomeView: React.FC<{ onFileGrievance: () => void; onTrack: () => vo
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-30 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white -mt-8 rounded-t-xl shadow-lg md:bg-transparent md:shadow-none md:mt-0">
         <Card className="text-center py-8 border-t-4 border-gov-accent">
           <div className="text-4xl mb-4">📝</div>
-          <h3 className="text-xl font-bold mb-2">Register Grievance</h3>
-          <p className="text-gray-600 mb-4">Lodge your complaint easily with our step-by-step process.</p>
+          <h3 className="text-xl font-bold mb-2">{t('registerGrievance')}</h3>
+          <p className="text-gray-600 mb-4">{t('lodgeYourComplaint')}</p>
         </Card>
         <Card className="text-center py-8 border-t-4 border-gov-success">
           <div className="text-4xl mb-4">🔍</div>
-          <h3 className="text-xl font-bold mb-2">Track Status</h3>
-          <p className="text-gray-600 mb-4">Get real-time updates on the progress of your resolution.</p>
+          <h3 className="text-xl font-bold mb-2">{t('trackStatusTitle')}</h3>
+          <p className="text-gray-600 mb-4">{t('getRealTimeUpdates')}</p>
         </Card>
         <Card className="text-center py-8 border-t-4 border-gov-blue">
           <div className="text-4xl mb-4">🤝</div>
-          <h3 className="text-xl font-bold mb-2">Redressal</h3>
-          <p className="text-gray-600 mb-4">Timely resolution by designated Nodal Officers.</p>
+          <h3 className="text-xl font-bold mb-2">{t('redressal')}</h3>
+          <p className="text-gray-600 mb-4">{t('timelyResolution')}</p>
         </Card>
       </div>
 
@@ -125,6 +128,7 @@ export const CitizenDashboard: React.FC<{
   user: User;
   onNavigate: (view: 'file-grievance' | 'track' | 'grievance-details', data?: any) => void
 }> = ({ user, onNavigate }) => {
+  const { t } = useLanguage();
   const [grievances, setGrievances] = useState<Grievance[]>([]);
   const [stats, setStats] = useState({ total: 0, open: 0, resolved: 0, reopened: 0 });
 
@@ -158,9 +162,9 @@ export const CitizenDashboard: React.FC<{
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case GrievanceStatus.SUBMITTED: return <Badge type="info">Submitted</Badge>;
-      case GrievanceStatus.UNDER_REVIEW: return <Badge type="warning">Under Review</Badge>;
-      case GrievanceStatus.CLOSED: return <Badge type="success">Closed</Badge>;
+      case GrievanceStatus.SUBMITTED: return <Badge type="info">{t('submitted')}</Badge>;
+      case GrievanceStatus.UNDER_REVIEW: return <Badge type="warning">{t('underReview')}</Badge>;
+      case GrievanceStatus.CLOSED: return <Badge type="success">{t('closed')}</Badge>;
       default: return <Badge type="info">{status}</Badge>;
     }
   };
@@ -169,46 +173,46 @@ export const CitizenDashboard: React.FC<{
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Welcome Banner */}
       <div className="bg-white rounded-lg shadow-sm border-l-4 border-gov-blue p-6 mb-8">
-        <h1 className="text-2xl font-bold text-gov-dark mb-1">Welcome back, {user.name}</h1>
-        <p className="text-gray-600">Here is a snapshot of your grievance activity.</p>
+        <h1 className="text-2xl font-bold text-gov-dark mb-1">{t('welcomeBack')}, {user.name}</h1>
+        <p className="text-gray-600">{t('hereIsSnapshot')}</p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <Card className="border-t-4 border-blue-500 text-center py-6">
-          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Total Grievances</h3>
+          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">{t('totalGrievances')}</h3>
           <p className="text-3xl font-bold text-gov-dark">{stats.total}</p>
         </Card>
         <Card className="border-t-4 border-yellow-500 text-center py-6">
-          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Open / In Progress</h3>
+          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">{t('openInProgress')}</h3>
           <p className="text-3xl font-bold text-gov-dark">{stats.open}</p>
         </Card>
         <Card className="border-t-4 border-green-500 text-center py-6">
-          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Resolved</h3>
+          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">{t('resolved')}</h3>
           <p className="text-3xl font-bold text-gov-dark">{stats.resolved}</p>
         </Card>
         <Card className="border-t-4 border-red-500 text-center py-6">
-          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">Reopened</h3>
+          <h3 className="text-gray-500 text-xs uppercase font-bold tracking-wider mb-1">{t('reopened')}</h3>
           <p className="text-3xl font-bold text-gov-dark">{stats.reopened}</p>
         </Card>
       </div>
 
       {/* Quick Actions */}
       <div className="mb-8">
-        <h2 className="text-lg font-bold text-gov-dark mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-bold text-gov-dark mb-4">{t('quickActions')}</h2>
         <div className="flex flex-wrap gap-4">
-          <Button onClick={() => onNavigate('file-grievance')}>+ File New Grievance</Button>
-          <Button variant="outline" onClick={() => onNavigate('track')}>View All Grievances</Button>
+          <Button onClick={() => onNavigate('file-grievance')}>{t('fileNewGrievance')}</Button>
+          <Button variant="outline" onClick={() => onNavigate('track')}>{t('viewAllGrievances')}</Button>
         </div>
       </div>
 
       {/* Recent Grievances */}
       <div>
-        <h2 className="text-lg font-bold text-gov-dark mb-4">Recent Activity</h2>
+        <h2 className="text-lg font-bold text-gov-dark mb-4">{t('recentActivity')}</h2>
         {grievances.length === 0 ? (
           <Card className="text-center py-10 bg-gray-50 border-dashed border-2 border-gray-300">
-            <p className="text-gray-500 mb-4">You have not filed any grievances yet.</p>
-            <Button variant="primary" onClick={() => onNavigate('file-grievance')}>File Your First Grievance</Button>
+            <p className="text-gray-500 mb-4">{t('youHaveNotFiled')}</p>
+            <Button variant="primary" onClick={() => onNavigate('file-grievance')}>{t('fileYourFirstGrievance')}</Button>
           </Card>
         ) : (
           <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -216,11 +220,11 @@ export const CitizenDashboard: React.FC<{
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grievance ID</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Filed</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('grievanceID')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('subject')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('dateFiled')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('status')}</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('action')}</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -235,7 +239,7 @@ export const CitizenDashboard: React.FC<{
                           className="text-gov-blue hover:text-blue-800 font-medium"
                           onClick={() => onNavigate('grievance-details', g)}
                         >
-                          View
+                          {t('view')}
                         </button>
                       </td>
                     </tr>
@@ -245,7 +249,7 @@ export const CitizenDashboard: React.FC<{
             </div>
             {grievances.length > 5 && (
               <div className="px-6 py-3 bg-gray-50 border-t border-gray-200 text-right">
-                <button className="text-sm text-gov-blue hover:underline" onClick={() => onNavigate('track')}>View all records &rarr;</button>
+                <button className="text-sm text-gov-blue hover:underline" onClick={() => onNavigate('track')}>{t('viewAllRecords')}</button>
               </div>
             )}
           </div>

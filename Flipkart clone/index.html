@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flipkart Clone - Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="topbar">
+        <div class="logo">Flipkart Clone</div>
+        <div class="search">
+          <input type="text" placeholder="Search for products, brands and more" />
+          <button aria-label="Search">
+            <span class="icon">🔍</span>
+          </button>
+        </div>
+        <div class="actions">
+          <button class="btn ghost">Login</button>
+          <button class="btn primary">Become a Seller</button>
+          <button class="icon-btn" aria-label="Cart">
+            <span class="icon">🛒</span>
+            <span class="badge">2</span>
+          </button>
+        </div>
+      </div>
+      <nav class="category-nav">
+        <a href="#deals">Mobiles</a>
+        <a href="#fashion">Fashion</a>
+        <a href="#electronics">Electronics</a>
+        <a href="#home">Home &amp; Furniture</a>
+        <a href="#appliances">Appliances</a>
+        <a href="#grocery">Grocery</a>
+        <a href="#beauty">Beauty &amp; Toys</a>
+        <a href="#travel">Travel</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="carousel" id="carousel">
+          <div class="slide active">
+            <div class="slide-text">
+              <p class="eyebrow">Big Billion Days</p>
+              <h1>Up to 70% Off on Everything</h1>
+              <p>Shop blockbuster offers across mobiles, fashion, and home essentials.</p>
+              <button class="btn primary">Shop Now</button>
+            </div>
+            <div class="slide-art">
+              <div class="promo-card">
+                <h3>Fastest Delivery</h3>
+                <p>Free shipping on orders over ₹499</p>
+              </div>
+              <div class="promo-card light">
+                <h3>Bank Offers</h3>
+                <p>10% instant discount with select cards</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-text">
+              <p class="eyebrow">Latest Smartphones Launch</p>
+              <h1>New-Gen Devices, Smart Prices</h1>
+              <p>Experience 5G power with exchange benefits and no-cost EMI.</p>
+              <button class="btn primary">Explore Mobiles</button>
+            </div>
+            <div class="slide-art">
+              <div class="promo-card">
+                <h3>Exchange Bonus</h3>
+                <p>Up to ₹6,000 off on old phones</p>
+              </div>
+              <div class="promo-card light">
+                <h3>Accessory Combos</h3>
+                <p>Best bundles under ₹999</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-text">
+              <p class="eyebrow">Mega Electronics Sale</p>
+              <h1>Audio, TVs &amp; Laptops on Fire</h1>
+              <p>Upgrade your entertainment with massive savings today.</p>
+              <button class="btn primary">See Electronics</button>
+            </div>
+            <div class="slide-art">
+              <div class="promo-card">
+                <h3>Top Rated</h3>
+                <p>4.5★+ best sellers</p>
+              </div>
+              <div class="promo-card light">
+                <h3>EMI Ready</h3>
+                <p>Starting at ₹999/mo</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="dot active" data-slide="0"></button>
+            <button class="dot" data-slide="1"></button>
+            <button class="dot" data-slide="2"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="deals">
+        <div class="section-head">
+          <h2>Deals of the Day</h2>
+          <button class="btn ghost">View All</button>
+        </div>
+        <div class="product-grid"></div>
+      </section>
+
+      <section class="section horizontal" id="electronics">
+        <div class="section-head">
+          <h2>Best of Electronics</h2>
+          <button class="btn ghost">Explore</button>
+        </div>
+        <div class="scroll-row" data-row="electronics"></div>
+      </section>
+
+      <section class="section horizontal" id="fashion">
+        <div class="section-head">
+          <h2>Top Fashion Deals</h2>
+          <button class="btn ghost">Shop Fashion</button>
+        </div>
+        <div class="scroll-row" data-row="fashion"></div>
+      </section>
+
+      <section class="section horizontal" id="home">
+        <div class="section-head">
+          <h2>Home Essentials</h2>
+          <button class="btn ghost">Upgrade Home</button>
+        </div>
+        <div class="scroll-row" data-row="home"></div>
+      </section>
+
+      <section class="section horizontal" id="travel">
+        <div class="section-head">
+          <h2>Trending Gadgets</h2>
+          <button class="btn ghost">See All</button>
+        </div>
+        <div class="scroll-row" data-row="gadgets"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h4>About Us</h4>
+          <p>
+            Flipkart Clone is a dummy marketplace UI built for showcasing modern Indian
+            eCommerce experiences.
+          </p>
+        </div>
+        <div>
+          <h4>Help Center</h4>
+          <ul>
+            <li>Payments</li>
+            <li>Shipping</li>
+            <li>Cancellation &amp; Returns</li>
+            <li>FAQ</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Terms &amp; Policies</h4>
+          <ul>
+            <li>Terms of Use</li>
+            <li>Security</li>
+            <li>Privacy</li>
+            <li>Compliance</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>support@flipkartclone.in</li>
+            <li>1800-000-000</li>
+            <li>New Delhi, India</li>
+          </ul>
+          <div class="socials">
+            <span>🌐</span>
+            <span>📸</span>
+            <span>🐦</span>
+            <span>▶️</span>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">© 2026 Flipkart Clone. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
