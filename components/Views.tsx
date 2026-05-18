@@ -653,6 +653,7 @@ export const AuthWizard: React.FC<{ onAuthenticated: (user: User) => void }> = (
 
 // --- File Grievance View ---
 export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initialData?: ChatbotData }> = ({ onSubmit, initialData }) => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     subject: '',
     category: '',
@@ -682,7 +683,7 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6 text-gov-dark">File a New Grievance</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gov-dark">{t('fileANewGrievance')}</h2>
       {initialData && (
         <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6 text-sm flex items-center gap-2">
           <span>Form pre-filled from Haryana Sahayak chat. Please review and add location details.</span>
@@ -691,7 +692,7 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
       <Card>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Grievance Subject"
+            label={t('subject')}
             placeholder="Brief title of your complaint"
             required
             value={formData.subject}
@@ -700,17 +701,17 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Select
-              label="Grievance Category"
+              label={t('grievanceCategory')}
               options={CATEGORIES}
-              placeholder="Select Category"
+              placeholder={t('selectCategory')}
               required
               value={formData.category}
               onChange={e => setFormData({...formData, category: e.target.value})}
             />
             <Select
-              label="District"
+              label={t('district')}
               options={DISTRICTS}
-              placeholder="Select District"
+              placeholder={t('selectDistrict')}
               required
               value={formData.district}
               onChange={e => setFormData({...formData, district: e.target.value})}
@@ -718,16 +719,16 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
           </div>
 
           <Input
-            label="Specific Location / Address"
-            placeholder="Ward number, Village, Sector, Landmark..."
+            label={t('location')}
+            placeholder={t('locationPlaceholder')}
             required
             value={formData.location}
             onChange={e => setFormData({...formData, location: e.target.value})}
           />
 
           <TextArea
-            label="Detailed Description"
-            placeholder="Please describe your issue in detail..."
+            label={t('description')}
+            placeholder={t('descriptionPlaceholder')}
             rows={5}
             required
             value={formData.description}
@@ -735,7 +736,7 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
           />
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Attach Photos/Documents (Optional)</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">{t('uploadFiles')}</label>
             <input
               type="file"
               className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-gov-blue hover:file:bg-blue-100"
@@ -751,11 +752,11 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
               onChange={e => setFormData({...formData, isAnonymized: e.target.checked})}
               className="w-4 h-4 text-gov-blue rounded focus:ring-gov-blue"
             />
-            <label htmlFor="anon" className="text-sm text-gray-700">File this grievance anonymously</label>
+            <label htmlFor="anon" className="text-sm text-gray-700">{t('fileAsAnonymous')}</label>
           </div>
 
           <div className="pt-4">
-            <Button type="submit" fullWidth size="lg">Submit Grievance</Button>
+            <Button type="submit" fullWidth size="lg">{t('submit')}</Button>
           </div>
         </form>
       </Card>
@@ -769,6 +770,7 @@ export const TrackGrievanceView: React.FC<{
   onViewDetails: (g: Grievance) => void;
   onBackToDashboard: () => void;
 }> = ({ user, onViewDetails, onBackToDashboard }) => {
+  const { t } = useLanguage();
   const [grievances, setGrievances] = useState<Grievance[]>([]);
 
   useEffect(() => {
@@ -801,14 +803,14 @@ export const TrackGrievanceView: React.FC<{
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-6 flex items-center">
          <Button variant="ghost" className="pl-0 text-gray-600 hover:text-gov-blue" onClick={onBackToDashboard}>
-            &larr; Back to Dashboard
+            &larr; {t('back')}
          </Button>
       </div>
-      <h2 className="text-2xl font-bold mb-6 text-gov-dark">My Grievances</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gov-dark">{t('allGrievances')}</h2>
 
       {grievances.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg shadow">
-          <p className="text-gray-500">No grievances found.</p>
+          <p className="text-gray-500">{t('noGrievancesYet')}</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -824,7 +826,7 @@ export const TrackGrievanceView: React.FC<{
                 </div>
                 <div className="flex items-center justify-between md:justify-end w-full md:w-auto gap-4">
                    <Badge type={getStatusColor(g.status)}>{g.status}</Badge>
-                   <span className="text-gov-blue text-sm font-medium">View Details &rarr;</span>
+                   <span className="text-gov-blue text-sm font-medium">{t('view')} &rarr;</span>
                 </div>
               </div>
             </Card>
@@ -841,6 +843,7 @@ export const GrievanceDetailsView: React.FC<{
   onBack: () => void;
   onReply: (msg: string) => void;
 }> = ({ grievance, onBack, onReply }) => {
+  const { t } = useLanguage();
   const [replyText, setReplyText] = useState('');
 
   const handleSendReply = () => {
@@ -852,7 +855,7 @@ export const GrievanceDetailsView: React.FC<{
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <Button variant="ghost" onClick={onBack} className="mb-4 pl-0">
-        &larr; Back to List
+        &larr; {t('back')}
       </Button>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -861,7 +864,7 @@ export const GrievanceDetailsView: React.FC<{
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h1 className="text-2xl font-bold text-gov-dark mb-1">{grievance.subject}</h1>
-                <p className="text-sm text-gray-500">Filed on {new Date(grievance.dateFiled).toLocaleDateString()} • ID: {grievance.id}</p>
+                <p className="text-sm text-gray-500">{t('submittedOn')} {new Date(grievance.dateFiled).toLocaleDateString()} • ID: {grievance.id}</p>
               </div>
               <Badge type={
                 grievance.status === GrievanceStatus.CLOSED ? 'success' :
@@ -904,23 +907,23 @@ export const GrievanceDetailsView: React.FC<{
             )}
 
             <div className="prose max-w-none">
-              <h3 className="text-lg font-semibold mb-2">Description</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('description')}</h3>
               <p className="text-gray-700 whitespace-pre-wrap mb-4">{grievance.description}</p>
 
               <h3 className="text-lg font-semibold mb-2">Details</h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
-                <div><span className="font-semibold">District:</span> {grievance.district}</div>
-                <div><span className="font-semibold">Category:</span> {grievance.category}</div>
-                <div><span className="font-semibold">Location:</span> {grievance.location}</div>
+                <div><span className="font-semibold">{t('district')}:</span> {grievance.district}</div>
+                <div><span className="font-semibold">{t('category')}:</span> {grievance.category}</div>
+                <div><span className="font-semibold">{t('location')}:</span> {grievance.location}</div>
               </div>
             </div>
           </Card>
 
           <Card>
-            <h3 className="text-lg font-semibold mb-4">Discussion & Updates</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('replies')}</h3>
             <div className="space-y-4 mb-6 max-h-60 overflow-y-auto">
               {grievance.replies.length === 0 ? (
-                <p className="text-gray-500 text-sm text-center italic">No remarks yet.</p>
+                <p className="text-gray-500 text-sm text-center italic">{t('noReplies')}</p>
               ) : (
                 grievance.replies.map((reply, idx) => (
                   <div key={idx} className={`p-3 rounded ${reply.author === 'You' ? 'bg-blue-50 ml-8' : 'bg-gray-50 mr-8'}`}>
@@ -936,18 +939,18 @@ export const GrievanceDetailsView: React.FC<{
             <div className="flex gap-2">
               <input
                 className="flex-grow border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-gov-blue outline-none"
-                placeholder="Add a remark or query..."
+                placeholder={t('typeYourMessage')}
                 value={replyText}
                 onChange={e => setReplyText(e.target.value)}
               />
-              <Button size="sm" onClick={handleSendReply} disabled={grievance.status === GrievanceStatus.CLOSED}>Send</Button>
+              <Button size="sm" onClick={handleSendReply} disabled={grievance.status === GrievanceStatus.CLOSED}>{t('send')}</Button>
             </div>
           </Card>
         </div>
 
         <div className="space-y-6">
           <Card>
-            <h3 className="text-lg font-semibold mb-4">Timeline</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('timeline')}</h3>
             <div className="relative border-l-2 border-gray-200 ml-3 space-y-6">
               {grievance.timeline.map((event, idx) => (
                 <div key={idx} className="relative pl-6">
