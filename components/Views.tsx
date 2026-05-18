@@ -65,7 +65,7 @@ export const HomeView: React.FC<{ onFileGrievance: () => void; onTrack: () => vo
               </h1>
               <p className="text-xl mb-8 text-blue-100 max-w-lg drop-shadow-md leading-relaxed">
                 {t('officialPublicGrievanceRedressal')}
-                Transparent, Efficient, and Accountable Governance.
+                {t('governanceTagline')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="secondary" size="lg" onClick={onFileGrievance}>
@@ -407,12 +407,12 @@ export const ChatbotAssistant: React.FC<{
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
-          { sender: 'bot', text: 'Great, let us file a new grievance with Haryana Government.' },
+          { sender: 'bot', text: t('letUsFileGrievance') },
           {
              sender: 'bot',
              isOptions: true,
              options: [
-               { label: 'Open Grievance Form', action: () => { setIsOpen(false); onNavigate('file-grievance'); } },
+               { label: t('openGrievanceForm'), action: () => { setIsOpen(false); onNavigate('file-grievance'); } },
                { label: t('backToOptions'), action: resetToMainMenu }
              ]
           }
@@ -425,8 +425,8 @@ export const ChatbotAssistant: React.FC<{
     setTimeout(() => {
       setMessages(prev => [
         ...prev,
-        { sender: 'bot', text: 'You can ask me questions about how to use this Haryana Grievance Portal (e.g., how to file, documents needed, tracking).' },
-        { sender: 'bot', text: 'Go ahead, type your question below.' }
+        { sender: 'bot', text: t('qnaPortalQuestion') },
+        { sender: 'bot', text: t('typeQuestionBelow') }
       ]);
     }, 500);
   };
@@ -439,18 +439,18 @@ export const ChatbotAssistant: React.FC<{
     setInput('');
 
     setTimeout(() => {
-      let reply = "I didn't quite understand that. Please ask about filing, tracking, or documents related to Haryana grievance process.";
+      let reply = t('qnaDidNotUnderstand');
 
       if (txt.includes('file') || txt.includes('filing')) {
-        reply = "To file a grievance with Haryana Government: 1. Login to the portal. 2. Click on 'File Grievance' in the dashboard. 3. Select your district (Gurugram, Faridabad, Karnal, etc.), category, and fill in the details. 4. Submit your grievance.";
+        reply = t('qnaFileGrievanceAnswer');
       } else if (txt.includes('track') || txt.includes('status')) {
-        reply = "To track a grievance: Go to your Dashboard and click 'View All Grievances'. You can see the realtime status there. Your grievance ID starts with HRG-.";
+        reply = t('qnaTrackGrievanceAnswer');
       } else if (txt.includes('document') || txt.includes('photo') || txt.includes('upload')) {
-        reply = "You can upload JPG, PNG images or PDF documents. Please ensure files are clear and relevant to your complaint.";
+        reply = t('qnaDocumentAnswer');
       } else if (txt.includes('secure') || txt.includes('data') || txt.includes('privacy')) {
-        reply = "Your data is completely secure with Haryana Government. We only share details with the assigned Nodal Officer for resolving the issue.";
+        reply = t('qnaSecurityAnswer');
       } else if (txt.includes('district') || txt.includes('area')) {
-        reply = "This portal covers all Haryana districts including Gurugram, Faridabad, Panipat, Karnal, Hisar, Rohtak, Ambala, Yamunanagar, Sonipat, and Bhiwani.";
+        reply = t('qnaDistrictAnswer');
       }
 
       setMessages(prev => [
@@ -460,7 +460,7 @@ export const ChatbotAssistant: React.FC<{
           sender: 'bot',
           isOptions: true,
           options: [
-            { label: 'Back to main options', action: resetToMainMenu }
+            { label: t('backToOptions'), action: resetToMainMenu }
           ]
         }
       ]);
@@ -477,7 +477,7 @@ export const ChatbotAssistant: React.FC<{
             className="bg-gov-blue text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all flex items-center gap-2 group"
             aria-label="Open Chatbot Assistant"
           >
-            <span className="hidden group-hover:inline-block font-medium pr-1 whitespace-nowrap">Need help? Ask Haryana Sahayak</span>
+            <span className="hidden group-hover:inline-block font-medium pr-1 whitespace-nowrap">{t('needHelpAsk')}</span>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
           </button>
         )}
@@ -495,7 +495,7 @@ export const ChatbotAssistant: React.FC<{
             <div className="flex gap-2">
               {mode !== 'MENU' && (
                 <button onClick={resetToMainMenu} className="text-xs bg-blue-800 hover:bg-blue-900 px-2 py-1 rounded">
-                  Main Menu
+                  {t('mainMenu')}
                 </button>
               )}
               <button onClick={() => setIsOpen(false)} className="hover:text-gray-200 text-lg">&times;</button>
@@ -619,9 +619,9 @@ export const AuthWizard: React.FC<{ onAuthenticated: (user: User) => void }> = (
           <Button fullWidth onClick={handleSendOTP} className="mt-2">{t('login')}</Button>
 
           <div className="mt-6 text-center pt-4 border-t">
-            <p className="text-sm text-gray-500 mb-2">For Testing Purposes:</p>
+            <p className="text-sm text-gray-500 mb-2">{t('forTestingPurposes')}</p>
             <button onClick={handleDemoLogin} className="text-xs text-gov-blue underline">
-              (Demo Only) Login as Nodal Officer
+              {t('demoLoginAsOfficer')}
             </button>
           </div>
         </>
@@ -631,19 +631,19 @@ export const AuthWizard: React.FC<{ onAuthenticated: (user: User) => void }> = (
             OTP sent to {mobile}. Use <strong>1234</strong> for testing.
           </div>
           <Input
-            label="Enter OTP"
-            placeholder="X X X X"
+            label={t('enterOTP')}
+            placeholder={t('otpPlaceholder')}
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
             maxLength={4}
             error={error}
           />
-          <Button fullWidth onClick={handleVerifyOTP} className="mt-2">Verify & Login</Button>
+          <Button fullWidth onClick={handleVerifyOTP} className="mt-2">{t('verifyLogin')}</Button>
           <button
             onClick={() => setStep(1)}
             className="w-full text-center mt-4 text-sm text-gray-500 hover:text-gov-blue"
           >
-            Change Mobile Number
+            {t('changeMobileNumber')}
           </button>
         </>
       )}
@@ -686,14 +686,14 @@ export const FileGrievanceView: React.FC<{ onSubmit: (data: any) => void; initia
       <h2 className="text-2xl font-bold mb-6 text-gov-dark">{t('fileANewGrievance')}</h2>
       {initialData && (
         <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6 text-sm flex items-center gap-2">
-          <span>Form pre-filled from Haryana Sahayak chat. Please review and add location details.</span>
+          <span>{t('formPrefilledFromChat')}</span>
         </div>
       )}
       <Card>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             label={t('subject')}
-            placeholder="Brief title of your complaint"
+            placeholder={t('briefTitlePlaceholder')}
             required
             value={formData.subject}
             onChange={e => setFormData({...formData, subject: e.target.value})}
@@ -877,11 +877,11 @@ export const GrievanceDetailsView: React.FC<{
             {/* Dynamic Status Details */}
             {grievance.status === GrievanceStatus.UNDER_REVIEW && (
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                <h4 className="text-sm font-bold text-yellow-800 uppercase mb-1">Current Status</h4>
-                <p className="text-sm text-yellow-900">Your grievance is currently under review.</p>
+                <h4 className="text-sm font-bold text-yellow-800 uppercase mb-1">{t('currentStatus')}</h4>
+                <p className="text-sm text-yellow-900">{t('grievanceUnderReview')}</p>
                 {grievance.assignedOfficer && (
                   <div className="mt-2 pt-2 border-t border-yellow-200">
-                    <p className="text-xs font-semibold text-yellow-800">Assigned Nodal Officer:</p>
+                    <p className="text-xs font-semibold text-yellow-800">{t('assignedNodalOfficer')}</p>
                     <p className="text-sm font-medium text-gov-dark">{grievance.assignedOfficer}</p>
                   </div>
                 )}
@@ -890,16 +890,16 @@ export const GrievanceDetailsView: React.FC<{
 
             {grievance.status === GrievanceStatus.CLOSED && (
                <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-                <h4 className="text-sm font-bold text-green-800 uppercase mb-1">Case Closed</h4>
+                <h4 className="text-sm font-bold text-green-800 uppercase mb-1">{t('caseClosed')}</h4>
                 {grievance.resolution && (
                    <div className="mb-3">
-                     <p className="text-xs font-semibold text-green-800">Final Resolution:</p>
+                     <p className="text-xs font-semibold text-green-800">{t('finalResolution')}</p>
                      <p className="text-sm text-gray-800 italic">"{grievance.resolution}"</p>
                    </div>
                 )}
                 {grievance.closingOfficer && (
                   <div className="pt-2 border-t border-green-200">
-                    <p className="text-xs font-semibold text-green-800">Closed By Nodal Officer:</p>
+                    <p className="text-xs font-semibold text-green-800">{t('closedByNodalOfficer')}</p>
                     <p className="text-sm font-medium text-gov-dark">{grievance.closingOfficer}</p>
                   </div>
                 )}
@@ -910,7 +910,7 @@ export const GrievanceDetailsView: React.FC<{
               <h3 className="text-lg font-semibold mb-2">{t('description')}</h3>
               <p className="text-gray-700 whitespace-pre-wrap mb-4">{grievance.description}</p>
 
-              <h3 className="text-lg font-semibold mb-2">Details</h3>
+              <h3 className="text-lg font-semibold mb-2">{t('detailsLabel')}</h3>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div><span className="font-semibold">{t('district')}:</span> {grievance.district}</div>
                 <div><span className="font-semibold">{t('category')}:</span> {grievance.category}</div>
@@ -972,30 +972,32 @@ export const GrievanceDetailsView: React.FC<{
 
 // --- GRO Dashboard (Haryana Grievance Control Panel) ---
 export const GRODashboard: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Haryana Grievance Control Panel</h1>
-      <p className="text-gray-600 mb-6">Nodal Officer Dashboard - Haryana Departments</p>
+      <h1 className="text-2xl font-bold mb-6">{t('haryanaGrievanceControlPanel')}</h1>
+      <p className="text-gray-600 mb-6">{t('nodalOfficerDashboard')}</p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <Card className="border-l-4 border-blue-500">
-           <h3 className="text-gray-500 text-sm">Total Grievances</h3>
+           <h3 className="text-gray-500 text-sm">{t('totalGrievancesMetric')}</h3>
            <p className="text-2xl font-bold">142</p>
         </Card>
         <Card className="border-l-4 border-yellow-500">
-           <h3 className="text-gray-500 text-sm">Pending (Normal)</h3>
+           <h3 className="text-gray-500 text-sm">{t('pendingNormal')}</h3>
            <p className="text-2xl font-bold">28</p>
         </Card>
         <Card className="border-l-4 border-orange-500">
-           <h3 className="text-gray-500 text-sm">Important</h3>
+           <h3 className="text-gray-500 text-sm">{t('importantMetric')}</h3>
            <p className="text-2xl font-bold">8</p>
         </Card>
         <Card className="border-l-4 border-red-500">
-           <h3 className="text-gray-500 text-sm">Urgent</h3>
+           <h3 className="text-gray-500 text-sm">{t('urgentMetric')}</h3>
            <p className="text-2xl font-bold">3</p>
         </Card>
       </div>
       <Card>
-        <p className="text-center text-gray-500 py-10">Select a grievance to view details and take action.</p>
+        <p className="text-center text-gray-500 py-10">{t('selectGrievanceToView')}</p>
       </Card>
     </div>
   );

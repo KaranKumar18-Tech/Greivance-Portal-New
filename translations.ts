@@ -176,6 +176,45 @@ export interface Translations {
 
   // Form Validation
   pleaseSelect: string;
+
+  // Additional UI Strings
+  governanceTagline: string;
+  letUsFileGrievance: string;
+  openGrievanceForm: string;
+  askQuestionsAbout: string;
+  typeQuestionBelow: string;
+  mainMenu: string;
+  forTestingPurposes: string;
+  demoLoginAsOfficer: string;
+  otpSentUse1234: string;
+  enterOTP: string;
+  otpPlaceholder: string;
+  verifyLogin: string;
+  changeMobileNumber: string;
+  briefTitlePlaceholder: string;
+  formPrefilledFromChat: string;
+  currentStatus: string;
+  grievanceUnderReview: string;
+  assignedNodalOfficer: string;
+  caseClosed: string;
+  finalResolution: string;
+  closedByNodalOfficer: string;
+  detailsLabel: string;
+  haryanaGrievanceControlPanel: string;
+  nodalOfficerDashboard: string;
+  totalGrievancesMetric: string;
+  pendingNormal: string;
+  importantMetric: string;
+  urgentMetric: string;
+  selectGrievanceToView: string;
+  needHelpAsk: string;
+  qnaPortalQuestion: string;
+  qnaDidNotUnderstand: string;
+  qnaFileGrievanceAnswer: string;
+  qnaTrackGrievanceAnswer: string;
+  qnaDocumentAnswer: string;
+  qnaSecurityAnswer: string;
+  qnaDistrictAnswer: string;
 }
 
 const englishTranslations: Translations = {
@@ -354,6 +393,45 @@ const englishTranslations: Translations = {
 
   // Form Validation
   pleaseSelect: "Please select",
+
+  // Additional UI Strings
+  governanceTagline: "Transparent, Efficient, and Accountable Governance.",
+  letUsFileGrievance: "Great, let us file a new grievance with Haryana Government.",
+  openGrievanceForm: "Open Grievance Form",
+  askQuestionsAbout: "You can ask me questions about how to use this Haryana Grievance Portal (e.g., how to file, documents needed, tracking).",
+  typeQuestionBelow: "Go ahead, type your question below.",
+  mainMenu: "Main Menu",
+  forTestingPurposes: "For Testing Purposes:",
+  demoLoginAsOfficer: "(Demo Only) Login as Nodal Officer",
+  otpSentUse1234: "OTP sent to {mobile}. Use 1234 for testing.",
+  enterOTP: "Enter OTP",
+  otpPlaceholder: "X X X X",
+  verifyLogin: "Verify & Login",
+  changeMobileNumber: "Change Mobile Number",
+  briefTitlePlaceholder: "Brief title of your complaint",
+  formPrefilledFromChat: "Form pre-filled from Haryana Sahayak chat. Please review and add location details.",
+  currentStatus: "Current Status",
+  grievanceUnderReview: "Your grievance is currently under review.",
+  assignedNodalOfficer: "Assigned Nodal Officer:",
+  caseClosed: "Case Closed",
+  finalResolution: "Final Resolution:",
+  closedByNodalOfficer: "Closed By Nodal Officer:",
+  detailsLabel: "Details",
+  haryanaGrievanceControlPanel: "Haryana Grievance Control Panel",
+  nodalOfficerDashboard: "Nodal Officer Dashboard - Haryana Departments",
+  totalGrievancesMetric: "Total Grievances",
+  pendingNormal: "Pending (Normal)",
+  importantMetric: "Important",
+  urgentMetric: "Urgent",
+  selectGrievanceToView: "Select a grievance to view details and take action.",
+  needHelpAsk: "Need help? Ask Haryana Sahayak",
+  qnaPortalQuestion: "You can ask me questions about how to use this Haryana Grievance Portal (e.g., how to file, documents needed, tracking).",
+  qnaDidNotUnderstand: "I didn't quite understand that. Please ask about filing, tracking, or documents related to Haryana grievance process.",
+  qnaFileGrievanceAnswer: "To file a grievance with Haryana Government: 1. Login to the portal. 2. Click on 'File Grievance' in the dashboard. 3. Select your district (Gurugram, Faridabad, Karnal, etc.), category, and fill in the details. 4. Submit your grievance.",
+  qnaTrackGrievanceAnswer: "To track a grievance: Go to your Dashboard and click 'View All Grievances'. You can see the realtime status there. Your grievance ID starts with HRG-.",
+  qnaDocumentAnswer: "You can upload JPG, PNG images or PDF documents. Please ensure files are clear and relevant to your complaint.",
+  qnaSecurityAnswer: "Your data is completely secure with Haryana Government. We only share details with the assigned Nodal Officer for resolving the issue.",
+  qnaDistrictAnswer: "This portal covers all Haryana districts including Gurugram, Faridabad, Panipat, Karnal, Hisar, Rohtak, Ambala, Yamunanagar, Sonipat, and Bhiwani.",
 };
 
 const hindiTranslations: Translations = {
@@ -532,6 +610,45 @@ const hindiTranslations: Translations = {
 
   // Form Validation
   pleaseSelect: "कृपया चुनें",
+
+  // Additional UI Strings
+  governanceTagline: "पारदर्शी, कुशल और जवाबदेही शासन।",
+  letUsFileGrievance: "बहुत अच्छा, आइए हरियाणा सरकार के साथ एक नई शिकायत दर्ज करें।",
+  openGrievanceForm: "शिकायत फॉर्म खोलें",
+  askQuestionsAbout: "आप इस हरियाणा शिकायत पोर्टल का उपयोग कैसे करें, इस बारे में मुझसे प्रश्न पूछ सकते हैं (उदाहरण के लिए, कैसे दर्ज करें, दस्तावेज़ की आवश्यकता है, ट्रैकिंग)।",
+  typeQuestionBelow: "आगे बढ़ें, नीचे अपना प्रश्न टाइप करें।",
+  mainMenu: "मुख्य मेनू",
+  forTestingPurposes: "परीक्षण उद्देश्यों के लिए:",
+  demoLoginAsOfficer: "(केवल डेमो) नोडल अधिकारी के रूप में लॉगिन करें",
+  otpSentUse1234: "{mobile} को OTP भेजा गया है। परीक्षण के लिए 1234 का उपयोग करें।",
+  enterOTP: "OTP दर्ज करें",
+  otpPlaceholder: "X X X X",
+  verifyLogin: "सत्यापित करें और लॉगिन करें",
+  changeMobileNumber: "मोबाइल नंबर बदलें",
+  briefTitlePlaceholder: "अपनी शिकायत का संक्षिप्त शीर्षक",
+  formPrefilledFromChat: "हरियाणा सहायक चैट से फॉर्म पूर्व-भरा हुआ। कृपया समीक्षा करें और स्थान विवरण जोड़ें।",
+  currentStatus: "वर्तमान स्थिति",
+  grievanceUnderReview: "आपकी शिकायत वर्तमान में समीक्षा के अधीन है।",
+  assignedNodalOfficer: "नियुक्त नोडल अधिकारी:",
+  caseClosed: "मामला बंद",
+  finalResolution: "अंतिम समाधान:",
+  closedByNodalOfficer: "नोडल अधिकारी द्वारा बंद किया गया:",
+  detailsLabel: "विवरण",
+  haryanaGrievanceControlPanel: "हरियाणा शिकायत नियंत्रण पैनल",
+  nodalOfficerDashboard: "नोडल अधिकारी डैशबोर्ड - हरियाणा विभाग",
+  totalGrievancesMetric: "कुल शिकायतें",
+  pendingNormal: "लंबित (सामान्य)",
+  importantMetric: "महत्वपूर्ण",
+  urgentMetric: "तुरंत",
+  selectGrievanceToView: "विवरण देखने और कार्रवाई करने के लिए एक शिकायत चुनें।",
+  needHelpAsk: "मदद चाहिए? हरियाणा सहायक से पूछें",
+  qnaPortalQuestion: "आप इस हरियाणा शिकायत पोर्टल का उपयोग कैसे करें, इस बारे में मुझसे प्रश्न पूछ सकते हैं (उदाहरण के लिए, कैसे दर्ज करें, दस्तावेज़ की आवश्यकता है, ट्रैकिंग)।",
+  qnaDidNotUnderstand: "मुझे ठीक से समझ नहीं आया। कृपया हरियाणा शिकायत प्रक्रिया से संबंधित दर्ज करने, ट्रैक करने या दस्तावेज़ के बारे में पूछें।",
+  qnaFileGrievanceAnswer: "हरियाणा सरकार के साथ शिकायत दर्ज करने के लिए: 1. पोर्टल में लॉगिन करें। 2. डैशबोर्ड में 'शिकायत दर्ज करें' पर क्लिक करें। 3. अपना जिला (गुड़गांव, फरीदाबाद, करनाल, आदि), श्रेणी चुनें और विवरण भरें। 4. अपनी शिकायत प्रस्तुत करें।",
+  qnaTrackGrievanceAnswer: "शिकायत को ट्रैक करने के लिए: अपने डैशबोर्ड पर जाएं और 'सभी शिकायतें देखें' पर क्लिक करें। आप वहां रीयल-टाइम स्थिति देख सकते हैं। आपकी शिकायत ID HRG- से शुरू होती है।",
+  qnaDocumentAnswer: "आप JPG, PNG छवियां या PDF दस्तावेज़ अपलोड कर सकते हैं। कृपया सुनिश्चित करें कि फ़ाइलें स्पष्ट हैं और आपकी शिकायत से संबंधित हैं।",
+  qnaSecurityAnswer: "आपका डेटा हरियाणा सरकार के साथ पूरी तरह सुरक्षित है। हम समस्या को हल करने के लिए केवल आवश्यक विवरण नियुक्त नोडल अधिकारी के साथ साझा करते हैं।",
+  qnaDistrictAnswer: "यह पोर्टल गुड़गांव, फरीदाबाद, पानीपत, करनाल, हिसार, रोहतक, अंबाला, यमुनानगर, सोनीपत और भिवानी सहित सभी हरियाणा जिलों को कवर करता है।",
 };
 
 export const translations: Record<Language, Translations> = {
